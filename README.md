@@ -1,5 +1,5 @@
 # Ex.04 Design a Website for Server Side Processing
-## Date:
+## Date:26.02.2026
 
 ## AIM:
 To create a web page to calculate total bill amount with GST from price and GST percentage using server-side scripts.
@@ -43,12 +43,107 @@ Render the result to the HTML template.
 Publish the website in Localhost.
 
 ## PROGRAM:
+```
+
+gst.html
+
+<html>
+<head>
+<title>GST Bill Calculator</title>
+
+<style>
+.box {
+    width:500px;
+    height:320px;
+    border:ridge 3px black;
+    padding:10px;
+    position:fixed;
+    top:190px;
+    left:500px;
+    text-align:center;
+    background-color:silver;
+}
+</style>
+
+</head>
+
+<body bgcolor="teal">
+
+<div class="box">
+
+<h1>Total Bill  with GST</h1>
+<h3>RAMESH JAISURYA (25005800)</h3>
+
+<form method="POST">
+{% csrf_token %}
+
+<div>
+<label>Price (₹)</label>
+<input type="text" name="price" required>
+</div>
+<br>
+
+<div>
+<label>GST (%)</label>
+<input type="text" name="gst" required>
+</div>
+<br>
+
+<div>
+<input type="submit" value="Calculate">
+</div>
+<br>
+
+<div>
+<label>Total Bill (₹)</label>
+<input type="text" value="{{bill}}">
+</div>
+
+</form>
+</div>
+
+</body>
+</html>
+
+views.py
+
+
+from django.shortcuts import render
+
+def gst_bill(request):
+
+    p = float(request.POST.get('price', '0'))
+    g = float(request.POST.get('gst', '0'))
+
+    bill = p + (p * g / 100) if request.method == 'POST' else 0
+
+    print("price =", p)
+    print("gst =", g)
+    print("total bill =", bill)
+
+    return render(request, 'mathapp/gst.html',
+                  {'p': p, 'g': g, 'bill': bill})
+
+urls.py
+
+
+from django.contrib import admin
+from django.urls import path
+from mathapp import views
+
+urlpatterns = [
+    path('', views.gst_bill, name='gst_bill'),
+]
+```
+
+
 
 
 ## OUTPUT - SERVER SIDE:
-
+![alt text](<Screenshot (90).png>)
 
 ## OUTPUT - WEBPAGE:
+![alt text](<Screenshot (91).png>)
 
 
 ## RESULT:

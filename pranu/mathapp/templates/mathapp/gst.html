@@ -1,0 +1,58 @@
+<html>
+<head>
+<title>GST Bill Calculator</title>
+
+<style>
+.box {
+    width:500px;
+    height:320px;
+    border:ridge 3px black;
+    padding:10px;
+    position:fixed;
+    top:190px;
+    left:500px;
+    text-align:center;
+    background-color:silver;
+}
+</style>
+
+</head>
+
+<body bgcolor="teal">
+
+<div class="box">
+
+<h1>Total Bill  with GST</h1>
+<h3>RAMESH JAISURYA (25005800)</h3>
+
+<form method="POST">
+{% csrf_token %}
+
+<div>
+<label>Price (₹)</label>
+<input type="text" name="price" required>
+</div>
+<br>
+
+<div>
+<label>GST (%)</label>
+<input type="text" name="gst" required>
+</div>
+<br>
+
+<div>
+<input type="submit" value="Calculate">
+</div>
+<br>
+
+<div>
+<label>Total Bill (₹)</label>
+<input type="text" value="{{bill}}">
+</div>
+
+</form>
+</div>
+
+</body>
+</html>
+    
