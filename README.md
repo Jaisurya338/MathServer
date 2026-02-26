@@ -140,10 +140,11 @@ urlpatterns = [
 
 
 ## OUTPUT - SERVER SIDE:
-![alt text](<Screenshot (90).png>)
+![alt text](<Screenshot (91).png>)
 
 ## OUTPUT - WEBPAGE:
-![alt text](<Screenshot (91).png>)
+
+![alt text](<Screenshot (90).png>)
 
 
 ## RESULT:
