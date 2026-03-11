@@ -1,5 +1,5 @@
 # Ex.04 Design a Website for Server Side Processing
-## Date:26.02.2026
+## Date:11.03.2026
 
 ## AIM:
 To create a web page to calculate total bill amount with GST from price and GST percentage using server-side scripts.
@@ -48,52 +48,44 @@ Publish the website in Localhost.
 gst.html
 
 <html>
-<head>
-<title>GST Bill Calculator</title>
+   <head>
+      <title>GST Bill Calculator</title>
 
-<style>
-.box {
-    width:500px;
-    height:320px;
-    border:ridge 3px black;
-    padding:10px;
-    position:fixed;
-    top:190px;
-    left:500px;
-    text-align:center;
-    background-color:silver;
-}
-</style>
+    <style>
+    .box {
+            width:480px;
+            height:300px;
+            border:ridge 3px black;
+            padding:10px;
+            position:fixed;
+            top:200px;
+            left:550px;
+            background-color:silver;
+            text-align:center;
+    }
+    </style>
 
-</head>
+   </head>
 
 <body bgcolor="teal">
 
-<div class="box">
-
+    <div class="box">
 <h1>Total Bill  with GST</h1>
 <h3>RAMESH JAISURYA (25005800)</h3>
-
 <form method="POST">
 {% csrf_token %}
 
 <div>
-<label>Price (₹)</label>
+<label>Price : </label>
 <input type="text" name="price" required>
-</div>
-<br>
-
+</div><br>
 <div>
-<label>GST (%)</label>
+<label>GST :</label>
 <input type="text" name="gst" required>
-</div>
-<br>
-
+</div><br>
 <div>
 <input type="submit" value="Calculate">
-</div>
-<br>
-
+</div><br>
 <div>
 <label>Total Bill (₹)</label>
 <input type="text" value="{{bill}}">
@@ -101,50 +93,20 @@ gst.html
 
 </form>
 </div>
-
 </body>
 </html>
-
-views.py
-
-
-from django.shortcuts import render
-
-def gst_bill(request):
-
-    p = float(request.POST.get('price', '0'))
-    g = float(request.POST.get('gst', '0'))
-
-    bill = p + (p * g / 100) if request.method == 'POST' else 0
-
-    print("price =", p)
-    print("gst =", g)
-    print("total bill =", bill)
-
-    return render(request, 'mathapp/gst.html',
-                  {'p': p, 'g': g, 'bill': bill})
-
-urls.py
-
-
-from django.contrib import admin
-from django.urls import path
-from mathapp import views
-
-urlpatterns = [
-    path('', views.gst_bill, name='gst_bill'),
-]
+    
 ```
 
 
 
 
 ## OUTPUT - SERVER SIDE:
-![alt text](<Screenshot (91).png>)
+![alt text](<Screenshot (95).png>)
 
 ## OUTPUT - WEBPAGE:
 
-![alt text](<Screenshot (90).png>)
+![alt text](<Screenshot (97).png>)
 
 
 ## RESULT:
